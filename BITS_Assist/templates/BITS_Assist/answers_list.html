@@ -1,0 +1,23 @@
+{% extends "BITS_Assist/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        {% for answer in answers %}
+        <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ answer.author }}</a>
+            </div>
+        <p class="article-content">{{answer.content }}</p>
+        
+        <form action ="{% url 'like' answer.id %}" method = "POST">
+        {% csrf_token %}
+            <button type ="submit" name="answer_id" value="{{ answer.id }}" class ="btn btn-danger">Like</button>
+        </form>
+        <form action ="{% url 'dislike' answer.id %}" method = "POST">
+        {% csrf_token %}
+            <button type ="submit" name="answer_id" value="{{ answer.id }}" class ="btn btn-danger">Disike</button>
+        </form>
+        </div>
+        {% endfor %}
+    </article>
+{% endblock content %}
+

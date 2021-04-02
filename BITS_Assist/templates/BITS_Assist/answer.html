@@ -1,0 +1,16 @@
+{% extends "BITS_Assist/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <article class="media content-section">    
+    <form method="POST">
+      {% csrf_token %}
+        {{ form|crispy }}
+        <fieldset class="form-group">    
+        <div class="article-metadata">
+          <p class="article-content">{{ question.content }}</p>
+          <input type = 'submit' > submit </input>
+        </div>
+        </fieldset>
+    </form>
+  </article>
+{% endblock content %}
